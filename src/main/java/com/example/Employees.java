@@ -17,6 +17,7 @@ public class Employees {
 		int payments = 0;
 		for (Employee employee : employees) {
 			try {
+				if (employee.isPaid()) throw new RuntimeException("this employee is already paid!");
 				bankService.pay(employee.getId(), employee.getSalary());
 				employee.setPaid(true);
 				payments++;
